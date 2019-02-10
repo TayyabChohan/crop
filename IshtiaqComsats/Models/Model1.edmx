@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IshtiaqBhaiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="214" />
+        </EntityType>
+        <EntityType Name="Person1">
+          <Key>
+            <PropertyRef Name="personId" />
+          </Key>
+          <Property Name="personId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="214" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="356" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="245" />
+          <Property Name="GenderId" Type="int" />
+          <Property Name="ReligionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="ReligionId" />
+          </Key>
+          <Property Name="ReligionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="214" />
+        </EntityType>
+        <Association Name="FK__Person1__GenderI__182C9B23">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Person1" Type="Self.Person1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="Person1">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person1__Religio__1920BF5C">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="0..1" />
+          <End Role="Person1" Type="Self.Person1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="ReligionId" />
+            </Principal>
+            <Dependent Role="Person1">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IshtiaqBhaiModelStoreContainer">
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person1" EntityType="Self.Person1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Religion" EntityType="Self.Religion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Person1__GenderI__182C9B23" Association="Self.FK__Person1__GenderI__182C9B23">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Person1" EntitySet="Person1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person1__Religio__1920BF5C" Association="Self.FK__Person1__Religio__1920BF5C">
+            <End Role="Religion" EntitySet="Religion" />
+            <End Role="Person1" EntitySet="Person1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IshtiaqBhaiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="214" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK__Person1__GenderI__182C9B23" FromRole="Gender" ToRole="Person1" />
+        </EntityType>
+        <EntityType Name="Person1">
+          <Key>
+            <PropertyRef Name="personId" />
+          </Key>
+          <Property Name="personId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="214" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="356" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="245" FixedLength="false" Unicode="true" />
+          <Property Name="GenderId" Type="Int32" />
+          <Property Name="ReligionId" Type="Int32" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK__Person1__GenderI__182C9B23" FromRole="Person1" ToRole="Gender" />
+          <NavigationProperty Name="Religion" Relationship="Self.FK__Person1__Religio__1920BF5C" FromRole="Person1" ToRole="Religion" />
+        </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="ReligionId" />
+          </Key>
+          <Property Name="ReligionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="214" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK__Person1__Religio__1920BF5C" FromRole="Religion" ToRole="Person1" />
+        </EntityType>
+        <Association Name="FK__Person1__GenderI__182C9B23">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Person1" Type="Self.Person1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="Person1">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person1__Religio__1920BF5C">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="0..1" />
+          <End Role="Person1" Type="Self.Person1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="ReligionId" />
+            </Principal>
+            <Dependent Role="Person1">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IshtiaqBhaiEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Person1" EntityType="Self.Person1" />
+          <EntitySet Name="Religions" EntityType="Self.Religion" />
+          <AssociationSet Name="FK__Person1__GenderI__182C9B23" Association="Self.FK__Person1__GenderI__182C9B23">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Person1" EntitySet="Person1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person1__Religio__1920BF5C" Association="Self.FK__Person1__Religio__1920BF5C">
+            <End Role="Religion" EntitySet="Religions" />
+            <End Role="Person1" EntitySet="Person1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IshtiaqBhaiModelStoreContainer" CdmEntityContainer="IshtiaqBhaiEntities1">
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="IshtiaqBhaiModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person1">
+            <EntityTypeMapping TypeName="IshtiaqBhaiModel.Person1">
+              <MappingFragment StoreEntitySet="Person1">
+                <ScalarProperty Name="personId" ColumnName="personId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Religions">
+            <EntityTypeMapping TypeName="IshtiaqBhaiModel.Religion">
+              <MappingFragment StoreEntitySet="Religion">
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

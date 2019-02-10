@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc87888743814425a38bb706764c12a5" Name="Diagram1">
+        <EntityTypeShape EntityType="IshtiaqBhaiModel.Gender" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IshtiaqBhaiModel.Person1" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IshtiaqBhaiModel.Religion" Width="1.5" PointX="0.875" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="IshtiaqBhaiModel.FK__Person1__GenderI__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="IshtiaqBhaiModel.FK__Person1__Religio__1920BF5C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
